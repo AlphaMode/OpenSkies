@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "open_skies",
+  "version": "${version}",
+  "name": "Open Skies",
+  "description": "",
+  "authors": [
+    "AlphaMode"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/OpenSkies/icon.png",
+  "environment": "*",
+  "dprovides": [
+  "com_electronwill_night-config_core",
+  "com_electronwill_night-config_toml"
+  ],
+  "entrypoints": {
+    "client": [
+      "me.alphamode.openskies.client.OpenSkiesClient"
+    ],
+    "main": [
+      "me.alphamode.openskies.OpenSkies"
+    ],
+    "fabric-datagen": [
+      "me.alphamode.openskies.data.OpenGenerator"
+    ],
+    "top_plugin": [
+      "me.alphamode.openskies.compat.probe.OpenProbePlugin"
+    ]
+  },
+  "accessWidener": "open.accesswidener",
+  "mixins": [
+    "OpenSkies.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.4",
+    "fabric": "*",
+    "minecraft": "1.18.2"
+  }
+}
