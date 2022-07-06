@@ -5,10 +5,16 @@
 *.ipr
 *.iws
 
-# IntelliJ
-out/
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+
+# vscode
+
+.settings/
+.vscode/
+bin/
+.classpath
+.project
 
 # JIRA plugin
 atlassian-ide-plugin.xml
@@ -100,16 +106,18 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-.gradle
+# gradle
+
+.gradle/
 build/
+out/
+classes/
 
 # Ignore Gradle GUI config
 gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
-
-**/build/
 
 # Common working directory
 run/
