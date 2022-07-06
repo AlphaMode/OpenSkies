@@ -31,7 +31,7 @@ public class OpenSkiesClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockEntityRendererRegistry.register(OpenBlockEntities.INFESTED_LEAVES, InfestedLeavesBlockEntityRenderer::new);
-        BlockEntityRendererRegistry.register(OpenBlockEntities.SIEVE, SieveBlockEntityRenderer::new);
+//        BlockEntityRendererRegistry.register(OpenBlockEntities.SIEVE, SieveBlockEntityRenderer::new);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutoutMipped(), OpenBlocks.INFESTED_LEAVES);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(), OpenBlocks.SIEVE);
         ModelBakeEvent.ON_MODEL_BAKE.register((modelManager, existingModels, loader) -> {

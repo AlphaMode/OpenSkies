@@ -22,7 +22,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SieveBlock extends Block implements EntityBlock {
+public class SieveBlock extends Block {
 
     public static final RegistryProperty<MeshType> MESH_TYPE = new RegistryProperty<>("mesh", MeshType.class, OpenMeshes.MESH);
 
@@ -37,29 +37,19 @@ public class SieveBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new SieveBlockEntity(blockPos, blockState);
-    }
-
-    @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        SieveBlockEntity sieveBE = (SieveBlockEntity) world.getBlockEntity(pos);
         ItemStack itemStack = player.getItemInHand(hand);
-        if (sieveBE == null) return InteractionResult.PASS;
         // Swap the old mesh with the new one if player is holding shift
-        if (sieveBE.getMesh() != null && player.isShiftKeyDown()) {
+        if (state.getValue(MESH_TYPE) != OpenMeshes.NONE && player.isShiftKeyDown()) {
             if (itemStack.getItem() instanceof MeshItem meshItem && itemStack.getCount() == 1) {
-                player.setItemInHand(hand, new ItemStack(sieveBE.getMesh().meshItem()));
-                sieveBE.setMesh(meshItem.getMeshType());
+                player.setItemInHand(hand, new ItemStack(state.getValue(MESH_TYPE).meshItem()));
                 return InteractionResult.SUCCESS;
             }
-            player.getInventory().placeItemBackInInventory(new ItemStack(sieveBE.getMesh().meshItem()));
-            sieveBE.setMesh(null);
+            player.getInventory().placeItemBackInInventory(new ItemStack(state.getValue(MESH_TYPE).meshItem()));
             world.setBlockAndUpdate(pos, state.setValue(MESH_TYPE, OpenMeshes.NONE));
             return InteractionResult.SUCCESS;
         }
-        if (itemStack.getItem() instanceof MeshItem meshItem && sieveBE.getMesh() == null) {
-            sieveBE.setMesh(meshItem.getMeshType());
+        if (itemStack.getItem() instanceof MeshItem meshItem && state.getValue(MESH_TYPE) == OpenMeshes.NONE) {
             world.setBlockAndUpdate(pos, state.setValue(MESH_TYPE, meshItem.getMeshType()));
             itemStack.shrink(1);
             return InteractionResult.SUCCESS;
