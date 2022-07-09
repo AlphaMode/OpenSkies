@@ -1,6 +1,7 @@
 package me.alphamode.openskies.util;
 
 public class Color {
+    public static final Color WHITE = new Color(1f, 1f, 1f, 1f);
 
     public float r;
     public float g;

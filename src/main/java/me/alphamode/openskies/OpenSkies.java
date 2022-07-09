@@ -4,6 +4,7 @@ import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import me.alphamode.openskies.meshes.OpenMeshes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -19,6 +20,8 @@ public class OpenSkies implements ModInitializer {
         FieldRegistrationHandler.register(OpenMeshes.class, MOD_ID, false);
         FieldRegistrationHandler.register(OpenBlocks.class, MOD_ID, false);
         FieldRegistrationHandler.register(OpenBlockEntities.class, MOD_ID, false);
+
+        FuelRegistry.INSTANCE.add(OpenItems.WOOD_CROOK, 200);
     }
 
     public static ResourceLocation asResource(String id) {

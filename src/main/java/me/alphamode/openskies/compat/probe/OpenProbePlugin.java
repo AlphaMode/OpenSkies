@@ -2,7 +2,7 @@ package me.alphamode.openskies.compat.probe;
 
 import mcjty.theoneprobe.api.*;
 import me.alphamode.openskies.OpenSkies;
-import me.alphamode.openskies.blocks.entity.InfestedBlockEntity;
+import me.alphamode.openskies.blocks.entity.InfestedLeavesBlockEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -21,7 +21,7 @@ public class OpenProbePlugin implements ITheOneProbePlugin {
             @Override
             public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, Player player, Level world, BlockState blockState, IProbeHitData data) {
                 BlockEntity be = world.getBlockEntity(data.getPos());
-                if (be != null && be instanceof InfestedBlockEntity tile) {
+                if (be != null && be instanceof InfestedLeavesBlockEntity tile) {
                     if (tile.getProgress() >= 1.0F) {
                         probeInfo.text("Progress: Done");
                     } else {

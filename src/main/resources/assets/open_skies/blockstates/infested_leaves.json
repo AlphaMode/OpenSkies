@@ -1,7 +1,7 @@
 {
     "variants": {
         "": {
-            "model": "open_skies:infested_leaves"
+            "model": "open_skies:block/infested_leaves"
         }
     }
 }

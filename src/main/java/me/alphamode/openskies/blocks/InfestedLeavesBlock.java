@@ -1,7 +1,7 @@
 package me.alphamode.openskies.blocks;
 
 import me.alphamode.openskies.OpenBlocks;
-import me.alphamode.openskies.blocks.entity.InfestedBlockEntity;
+import me.alphamode.openskies.blocks.entity.InfestedLeavesBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.Level;
@@ -22,18 +22,18 @@ public class InfestedLeavesBlock extends LeavesBlock implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new InfestedBlockEntity(blockPos, blockState);
+        return new InfestedLeavesBlockEntity(blockPos, blockState);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState state, BlockEntityType<T> blockEntityType) {
-        return (level, blockPos, blockState, blockEntity) -> ((InfestedBlockEntity)blockEntity).tick();
+        return (level, blockPos, blockState, blockEntity) -> ((InfestedLeavesBlockEntity)blockEntity).tick();
     }
 
     @Override
     public RenderShape getRenderShape(BlockState blockState) {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
+        return RenderShape.MODEL;
     }
 
     public static void infestLeafBlock(Level world, BlockPos pos) {
@@ -42,10 +42,10 @@ public class InfestedLeavesBlock extends LeavesBlock implements EntityBlock {
         if (block.is(BlockTags.LEAVES) && !block.is(OpenBlocks.INFESTED_LEAVES)) {
             world.setBlock(pos, OpenBlocks.INFESTED_LEAVES.defaultBlockState(), 3);
 
-            InfestedBlockEntity tile = (InfestedBlockEntity) world.getBlockEntity(pos);
+            InfestedLeavesBlockEntity tile = (InfestedLeavesBlockEntity) world.getBlockEntity(pos);
 
             if (tile != null) {
-                tile.setWrappedLeaves(block);
+                tile.setLeavesState(block);
             }
         }
     }
