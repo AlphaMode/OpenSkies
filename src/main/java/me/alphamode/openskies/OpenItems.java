@@ -3,12 +3,12 @@ package me.alphamode.openskies;
 import io.wispforest.owo.registration.reflect.ItemRegistryContainer;
 import me.alphamode.openskies.items.CrookItem;
 import me.alphamode.openskies.items.MeshItem;
-import me.alphamode.openskies.items.SilkWormItem;
+import me.alphamode.openskies.items.SilkwormItem;
 import me.alphamode.openskies.meshes.OpenMeshes;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 
 public class OpenItems implements ItemRegistryContainer {
-    public static SilkWormItem SILKWORM = new SilkWormItem(defaultSettings());
+    public static SilkwormItem SILKWORM = new SilkwormItem(defaultSettings());
     public static MeshItem STRING_MESH = new MeshItem(OpenMeshes.STRING, defaultSettings());
     public static MeshItem FLINT_MESH = new MeshItem(OpenMeshes.FLINT, defaultSettings());
     public static MeshItem IRON_MESH = new MeshItem(OpenMeshes.IRON, defaultSettings());

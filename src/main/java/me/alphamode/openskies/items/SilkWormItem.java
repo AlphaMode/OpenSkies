@@ -8,8 +8,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class SilkWormItem extends Item {
-    public SilkWormItem(Properties properties) {
+public class SilkwormItem extends Item {
+    public SilkwormItem(Properties properties) {
         super(properties);
     }
 
