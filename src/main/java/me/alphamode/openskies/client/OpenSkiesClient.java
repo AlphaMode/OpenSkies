@@ -5,6 +5,7 @@ import me.alphamode.openskies.OpenBlocks;
 import me.alphamode.openskies.blocks.entity.InfestedLeavesBlockEntity;
 import me.alphamode.openskies.client.models.InfestedLeavesModel;
 import me.alphamode.openskies.client.models.SieveModel;
+import me.alphamode.openskies.client.renderers.BarrelRenderer;
 import me.alphamode.openskies.meshes.OpenMeshes;
 import me.alphamode.openskies.util.Color;
 import me.alphamode.star.client.models.ModelSwapper;
@@ -13,6 +14,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
@@ -29,6 +31,8 @@ public class OpenSkiesClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 //        BlockEntityRendererRegistry.register(OpenBlockEntities.SIEVE, SieveBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(OpenBlockEntities.BARREL, BarrelRenderer::new);
+
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutoutMipped(), OpenBlocks.INFESTED_LEAVES);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(), OpenBlocks.SIEVE);
         ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> {
