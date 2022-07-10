@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.core.Direction;
 import org.jetbrains.annotations.Nullable;
 
-public interface ItemStorageProvider {
-    Storage<ItemVariant> getItemStorage(@Nullable Direction side);
+@SuppressWarnings("UnstableApiUsage")
+public interface ItemStorageProvider<T extends Storage<ItemVariant>> {
+    T getItemStorage(@Nullable Direction side);
 }

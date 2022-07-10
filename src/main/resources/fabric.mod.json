@@ -27,6 +27,9 @@
     ],
     "top_plugin": [
       "me.alphamode.openskies.compat.probe.OpenProbePlugin"
+    ],
+    "rei_client": [
+      "me.alphamode.openskies.compat.rei.OpenSkiesREI"
     ]
   },
   "accessWidener": "open.accesswidener",

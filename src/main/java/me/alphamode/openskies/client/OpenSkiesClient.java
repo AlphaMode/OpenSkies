@@ -6,6 +6,7 @@ import me.alphamode.openskies.blocks.entity.InfestedLeavesBlockEntity;
 import me.alphamode.openskies.client.models.InfestedLeavesModel;
 import me.alphamode.openskies.client.models.SieveModel;
 import me.alphamode.openskies.client.renderers.BarrelRenderer;
+import me.alphamode.openskies.client.renderers.SieveBlockEntityRenderer;
 import me.alphamode.openskies.meshes.OpenMeshes;
 import me.alphamode.openskies.util.Color;
 import me.alphamode.star.client.models.ModelSwapper;
@@ -30,7 +31,7 @@ import java.util.Optional;
 public class OpenSkiesClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-//        BlockEntityRendererRegistry.register(OpenBlockEntities.SIEVE, SieveBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(OpenBlockEntities.SIEVE, SieveBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(OpenBlockEntities.BARREL, BarrelRenderer::new);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutoutMipped(), OpenBlocks.INFESTED_LEAVES);

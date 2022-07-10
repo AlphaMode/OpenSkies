@@ -6,6 +6,8 @@ import me.alphamode.openskies.items.MeshItem;
 import me.alphamode.openskies.items.SilkwormItem;
 import me.alphamode.openskies.meshes.OpenMeshes;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.level.material.Fluids;
 
 public class OpenItems implements ItemRegistryContainer {
     public static SilkwormItem SILKWORM = new SilkwormItem(defaultSettings());

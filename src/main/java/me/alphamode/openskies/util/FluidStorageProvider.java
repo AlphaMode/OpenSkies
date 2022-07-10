@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.core.Direction;
 import org.jetbrains.annotations.Nullable;
 
-public interface FluidStorageProvider {
-    Storage<FluidVariant> getFluidStorage(@Nullable Direction side);
+@SuppressWarnings("UnstableApiUsage")
+public interface FluidStorageProvider<T extends Storage<FluidVariant>> {
+    T getFluidStorage(@Nullable Direction side);
 }

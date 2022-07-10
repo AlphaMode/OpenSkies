@@ -23,8 +23,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
-public class SieveBlock extends Block {
+import java.util.Optional;
+
+public class SieveBlock extends Block implements EntityBlock {
 
     public static final RegistryProperty<MeshType> MESH_TYPE = new RegistryProperty<>("mesh", MeshType.class, OpenMeshes.MESH);
 
@@ -36,6 +39,11 @@ public class SieveBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(MESH_TYPE);
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new SieveBlockEntity(pos, state);
     }
 
     @Override
@@ -57,6 +65,11 @@ public class SieveBlock extends Block {
                 itemStack.shrink(1);
             return InteractionResult.SUCCESS;
         }
+        Optional<SieveBlockEntity> sieve = world.getBlockEntity(pos, OpenBlockEntities.SIEVE);
+        if (sieve.isPresent()) {
+
+        }
+
         return super.use(state, world, pos, player, hand, blockHitResult);
     }
 
