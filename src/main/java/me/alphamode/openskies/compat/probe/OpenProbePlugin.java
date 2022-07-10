@@ -6,6 +6,7 @@ public class OpenProbePlugin implements ITheOneProbePlugin {
     @Override
     public void onLoad(ITheOneProbe api) {
         api.registerProvider(new InfestedLeavesProvider());
+        api.registerProvider(new BarrelProvider());
         api.registerProvider(new SieveProvider());
     }
 }

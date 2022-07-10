@@ -18,6 +18,8 @@ import net.fabricmc.fabric.api.transfer.v1.storage.base.ResourceAmount;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleSlotStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.Container;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -81,17 +83,30 @@ public class BarrelBlock extends Block implements EntityBlock {
             }
             if (barrelFluidStorage.getAmount() <= 0) {
                 SingleSlotStorage<ItemVariant> handStorage = PlayerInventoryStorage.of(player).getHandSlot(hand);
-                Item compostItem = CompostRegistry.getCompost(handStorage.getResource().getItem());
-                if (compostItem != null) {
+                if (CompostRegistry.containsCompost(handStorage.getResource().getItem()) && barrelItemStorage.getAmount() == 0) {
                     try (Transaction t = Transaction.openOuter()) {
                         StorageUtil.move(handStorage, barrelItemStorage, v -> v.getItem() instanceof BlockItem, 1, t);
                         t.commit();
                         barrel.get().setOriginalColor();
+                        return InteractionResult.SUCCESS;
                     }
                 }
             }
         }
         return super.use(blockState, level, pos, player, hand, result);
+    }
+
+    @Override
+    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+        if (!blockState.is(blockState2.getBlock())) {
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+            if (blockEntity instanceof BarrelBlockEntity barrelBlock) {
+                Containers.dropItemStack(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), barrelBlock.getItemStorage(null).getStack());
+                level.updateNeighbourForOutputSignal(blockPos, this);
+            }
+
+            super.onRemove(blockState, level, blockPos, blockState2, bl);
+        }
     }
 
     @Override

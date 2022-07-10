@@ -1,9 +1,7 @@
 package me.alphamode.openskies.recipes;
 
 import com.mojang.datafixers.util.Either;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.core.Registry;
-import net.minecraft.server.packs.PackType;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.Nullable;
@@ -32,6 +30,11 @@ public class CompostRegistry {
     @Nullable
     public static Item getCompost(Item from) {
         return cachedItemMap.getOrDefault(from, null);
+    }
+
+    @Nullable
+    public static boolean containsCompost(Item from) {
+        return cachedItemMap.containsKey(from);
     }
 
     protected static void cacheEntries() {

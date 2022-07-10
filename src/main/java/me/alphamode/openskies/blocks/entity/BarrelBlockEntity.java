@@ -41,11 +41,13 @@ public class BarrelBlockEntity extends BlockEntity implements FluidStorageProvid
                 t.commit();
             }
         }
-        if (!itemInventory.getResource().isBlank()) {
+        if (!itemInventory.getResource().isBlank() && CompostRegistry.containsCompost(itemInventory.getStack().getItem())) {
             compostProgress += 0.00166666667;
             currentColor = Color.average(originalColor, Color.WHITE, compostProgress);
-            if (compostProgress >= 1)
+            if (compostProgress >= 1) {
                 itemInventory.setStack(CompostRegistry.getCompost(itemInventory.getStack().getItem()).getDefaultInstance());
+                compostProgress = 0;
+            }
         }
     }
 
@@ -99,4 +101,7 @@ public class BarrelBlockEntity extends BlockEntity implements FluidStorageProvid
     }
 
 
+    public float getProgress() {
+        return compostProgress;
+    }
 }
