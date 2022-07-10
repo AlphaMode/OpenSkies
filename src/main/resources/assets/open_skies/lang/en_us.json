@@ -1,0 +1,13 @@
+{
+  "item.open_skies.silkworm": "Silkworm",
+  "item.open_skies.string_mesh": "String Mesh",
+  "item.open_skies.flint_mesh": "Flint Mesh",
+  "item.open_skies.iron_mesh": "Iron Mesh",
+  "item.open_skies.diamond_mesh": "Diamond Mesh",
+  "item.open_skies.wood_crook": "Wood Crook",
+
+  "block.open_skies.infested_leaves": "Infested Leaves",
+  "block.open_skies.sieve": "Sieve",
+  "block.open_skies.wood_barrel": "Wood Barrel",
+  "block.open_skies.stone_barrel": "Stone Barrel"
+}
