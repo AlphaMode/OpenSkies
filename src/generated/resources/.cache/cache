@@ -1,1 +1,8 @@
 b836d80f303a7ed79b6e336631ca549bffe1e597 data/minecraft/tags/blocks/leaves.json
+229440baae59948021ec4870fae448a0e919c3c8 data/open_skies/tags/items/compostable.json
+b836d80f303a7ed79b6e336631ca549bffe1e597 data/minecraft/tags/blocks/mineable/hoe.json
+bc702d3fffce7dea993e04330c3317d763dacc36 data/minecraft/tags/blocks/mineable/axe.json
+29eed5eb1878bd7f2f64fc868fa9a14541fabd36 data/open_skies/loot_tables/blocks/wood_barrel.json
+096c63d56a821c66a691ead08495486fbb40b922 data/minecraft/tags/blocks/mineable/pickaxe.json
+fdb6c8b3be57f80b67eba838b131784810e00821 data/open_skies/loot_tables/blocks/sieve.json
+a884dd51863cfbfec7b3d12087bc55589cb5e2e2 data/open_skies/loot_tables/blocks/stone_barrel.json

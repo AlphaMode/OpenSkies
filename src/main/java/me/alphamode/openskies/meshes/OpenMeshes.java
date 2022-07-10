@@ -12,10 +12,10 @@ import net.minecraft.network.chat.TextComponent;
 public class OpenMeshes implements AutoRegistryContainer<MeshType> {
     public static Registry<MeshType> MESH = FabricRegistryBuilder.createDefaulted(MeshType.class, OpenSkies.asResource("mesh_registry"), OpenSkies.asResource("none")).buildAndRegister();
     public static final MeshType NONE  = new MeshType(-1, null, new TextComponent("None").withStyle(ChatFormatting.WHITE));
-    public static final MeshType STRING  = new MeshType(0, OpenItems.STRING_MESH, new TextComponent("String").withStyle(ChatFormatting.WHITE));
-    public static final MeshType FLINT = new MeshType(1, OpenItems.FLINT_MESH, new TextComponent("Flint").withStyle(ChatFormatting.GRAY));
-    public static final MeshType IRON = new MeshType(2, OpenItems.IRON_MESH, new TextComponent("Iron").withStyle(ChatFormatting.DARK_GRAY));
-    public static final MeshType DIAMOND = new MeshType(3, OpenItems.DIAMOND_MESH, new TextComponent("Diamond").withStyle(ChatFormatting.AQUA));
+    public static final MeshType STRING  = new MeshType(0, OpenSkies.asResource("string_mesh"), new TextComponent("String").withStyle(ChatFormatting.WHITE));
+    public static final MeshType FLINT = new MeshType(1, OpenSkies.asResource("flint_mesh"), new TextComponent("Flint").withStyle(ChatFormatting.GRAY));
+    public static final MeshType IRON = new MeshType(2, OpenSkies.asResource("iron_mesh"), new TextComponent("Iron").withStyle(ChatFormatting.DARK_GRAY));
+    public static final MeshType DIAMOND = new MeshType(3, OpenSkies.asResource("diamond_mesh"), new TextComponent("Diamond").withStyle(ChatFormatting.AQUA));
 
     @Override
     public Registry<MeshType> getRegistry() {

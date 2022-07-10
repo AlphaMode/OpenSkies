@@ -7,5 +7,6 @@ public class OpenGenerator implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator generator) {
         generator.addProvider(OpenBlockTagsGenerator::new);
+        generator.addProvider(OpenLootGenerator::new);
     }
 }

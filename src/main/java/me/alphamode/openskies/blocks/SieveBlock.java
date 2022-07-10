@@ -1,5 +1,6 @@
 package me.alphamode.openskies.blocks;
 
+import me.alphamode.openskies.OpenBlockEntities;
 import me.alphamode.openskies.blocks.entity.SieveBlockEntity;
 import me.alphamode.openskies.items.MeshItem;
 import me.alphamode.openskies.meshes.MeshType;
@@ -12,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -51,10 +53,19 @@ public class SieveBlock extends Block {
         }
         if (itemStack.getItem() instanceof MeshItem meshItem && state.getValue(MESH_TYPE) == OpenMeshes.NONE) {
             world.setBlockAndUpdate(pos, state.setValue(MESH_TYPE, meshItem.getMeshType()));
-            itemStack.shrink(1);
+            if (!player.isCreative())
+                itemStack.shrink(1);
             return InteractionResult.SUCCESS;
         }
         return super.use(state, world, pos, player, hand, blockHitResult);
+    }
+
+    @Override
+    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        if (!player.isCreative() && state.getValue(MESH_TYPE) != OpenMeshes.NONE) {
+            Block.popResource(level, pos, new ItemStack(state.getValue(MESH_TYPE).meshItem()));
+        }
+        super.playerWillDestroy(level, pos, state, player);
     }
 
     @Override

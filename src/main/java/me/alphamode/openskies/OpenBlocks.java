@@ -14,9 +14,9 @@ import net.minecraft.world.level.material.Material;
 public class OpenBlocks implements BlockRegistryContainer {
     public static final InfestedLeavesBlock INFESTED_LEAVES = new InfestedLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).requiresCorrectToolForDrops());
 
-    public static final SieveBlock SIEVE = new SieveBlock(FabricBlockSettings.of(Material.WOOD));
-    public static final BarrelBlock WOOD_BARREL = new BarrelBlock(FabricBlockSettings.of(Material.WOOD));
-    public static final BarrelBlock STONE_BARREL = new BarrelBlock(FabricBlockSettings.of(Material.STONE));
+    public static final SieveBlock SIEVE = new SieveBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD));
+    public static final BarrelBlock WOOD_BARREL = new BarrelBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD));
+    public static final BarrelBlock STONE_BARREL = new BarrelBlock(FabricBlockSettings.copy(Blocks.STONE));
 
     @Override
     public BlockItem createBlockItem(Block block, String identifier) {
