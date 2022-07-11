@@ -7,6 +7,7 @@ import me.alphamode.openskies.util.FluidStorageProvider;
 import me.alphamode.openskies.util.ItemStorageProvider;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
@@ -28,6 +29,7 @@ public class OpenSkies implements ModInitializer {
         FieldRegistrationHandler.register(OpenBlocks.class, MOD_ID, false);
         FieldRegistrationHandler.register(OpenBlockEntities.class, MOD_ID, false);
 
+        FlammableBlockRegistry.getDefaultInstance().add(OpenBlocks.INFESTED_LEAVES, 30, 60);
         FuelRegistry.INSTANCE.add(OpenItems.WOOD_CROOK, 200);
 
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new CompostLoader());

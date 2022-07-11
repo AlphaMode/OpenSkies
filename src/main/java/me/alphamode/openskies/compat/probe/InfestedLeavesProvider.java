@@ -22,7 +22,7 @@ public class InfestedLeavesProvider implements IProbeInfoProvider {
     public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, Player player, Level world, BlockState blockState, IProbeHitData data) {
         Optional<InfestedLeavesBlockEntity> be = world.getBlockEntity(data.getPos(), OpenBlockEntities.INFESTED_LEAVES);
         if (be.isPresent()) {
-            probeInfo.text(CompoundText.createLabelInfo("Leaves Type: ", I18n.get(be.get().getLeavesState().getBlock().getDescriptionId())));
+            probeInfo.text(CompoundText.createLabelInfo("Leaves Type: ", I18n.get(be.get().getLeavesType().getBlock().getDescriptionId())));
             if (be.get().getProgress() >= 1.0F) {
                 probeInfo.text(CompoundText.createLabelInfo("Progress: ", "Done"));
             } else {

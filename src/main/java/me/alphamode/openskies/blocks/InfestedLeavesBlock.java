@@ -25,15 +25,23 @@ public class InfestedLeavesBlock extends LeavesBlock implements EntityBlock {
         return new InfestedLeavesBlockEntity(blockPos, blockState);
     }
 
+    @Override
+    public boolean isRandomlyTicking(BlockState blockState) {
+        return false;
+    }
+
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState state, BlockEntityType<T> blockEntityType) {
-        return (level, blockPos, blockState, blockEntity) -> ((InfestedLeavesBlockEntity)blockEntity).tick();
+        return (level, blockPos, blockState, blockEntity) -> {
+            if (!blockEntity.hasLevel()) blockEntity.setLevel(l);
+            ((InfestedLeavesBlockEntity) blockEntity).tick();
+        };
     }
 
     @Override
     public RenderShape getRenderShape(BlockState blockState) {
-        return RenderShape.MODEL;
+        return RenderShape.ENTITYBLOCK_ANIMATED;
     }
 
     public static void infestLeafBlock(Level world, BlockPos pos) {
@@ -45,7 +53,7 @@ public class InfestedLeavesBlock extends LeavesBlock implements EntityBlock {
             InfestedLeavesBlockEntity tile = (InfestedLeavesBlockEntity) world.getBlockEntity(pos);
 
             if (tile != null) {
-                tile.setLeavesState(block);
+                tile.setLeavesType(block);
             }
         }
     }

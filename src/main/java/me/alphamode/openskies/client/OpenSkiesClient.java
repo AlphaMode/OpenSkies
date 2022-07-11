@@ -4,10 +4,10 @@ import me.alphamode.openskies.OpenBlockEntities;
 import me.alphamode.openskies.OpenBlocks;
 import me.alphamode.openskies.OpenSkies;
 import me.alphamode.openskies.blocks.entity.InfestedLeavesBlockEntity;
-import me.alphamode.openskies.client.models.InfestedLeavesModel;
 import me.alphamode.openskies.client.models.SieveModel;
 import me.alphamode.openskies.client.renderers.BarrelRenderer;
 import me.alphamode.openskies.client.renderers.SieveBlockEntityRenderer;
+import me.alphamode.openskies.client.renderers.InfestedLeavesBlockEntityRenderer;
 import me.alphamode.openskies.meshes.OpenMeshes;
 import me.alphamode.openskies.util.Color;
 import me.alphamode.star.client.models.CTModelRegistry;
@@ -41,6 +41,7 @@ public class OpenSkiesClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(OpenBlockEntities.SIEVE, SieveBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(OpenBlockEntities.BARREL, BarrelRenderer::new);
 
+        BlockEntityRendererRegistry.register(OpenBlockEntities.INFESTED_LEAVES, InfestedLeavesBlockEntityRenderer::new);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutoutMipped(), OpenBlocks.INFESTED_LEAVES);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(), OpenBlocks.SIEVE);
         CTModelRegistry.registerCTModel(OpenBlocks.COMPRESSED_SAND);
@@ -50,7 +51,7 @@ public class OpenSkiesClient implements ClientModInitializer {
             if(blockEntity.isEmpty())
                 return Color.WHITE.toInt();
 
-            Color originalColor = new Color(Minecraft.getInstance().getBlockColors().getColor(blockEntity.get().getLeavesState(), blockEntity.get().getLevel(), blockPos, 0));
+            Color originalColor = new Color(Minecraft.getInstance().getBlockColors().getColor(blockEntity.get().getLeavesType(), blockEntity.get().getLevel(), blockPos, 0));
             return Color.average(originalColor, Color.WHITE, (float) Math.pow(blockEntity.get().getProgress(), 2)).toInt();
         }, OpenBlocks.INFESTED_LEAVES);
         ModelBakeEvent.ON_MODEL_BAKE.register((modelManager, existingModels, loader) -> {
@@ -61,10 +62,6 @@ public class OpenSkiesClient implements ClientModInitializer {
             }
             ModelSwapper.getAllBlockStateModelLocations(OpenBlocks.SIEVE).forEach(m -> {
                 existingModels.put(m, new SieveModel(existingModels.get(m), meshes));
-            });
-
-            ModelSwapper.getAllBlockStateModelLocations(OpenBlocks.INFESTED_LEAVES).forEach(m -> {
-                existingModels.put(m, new InfestedLeavesModel(existingModels.get(m)));
             });
         });
     }
