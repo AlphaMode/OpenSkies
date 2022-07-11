@@ -29,18 +29,22 @@ public class CompostRegistry {
 
     @Nullable
     public static Item getCompost(Item from) {
+        if (cachedItemMap.size() == 0)
+            CompostRegistry.cacheEntries();
         return cachedItemMap.getOrDefault(from, null);
     }
 
     @Nullable
     public static boolean containsCompost(Item from) {
+        if (cachedItemMap.size() == 0)
+            CompostRegistry.cacheEntries();
         return cachedItemMap.containsKey(from);
     }
 
     protected static void cacheEntries() {
         for (Map.Entry<Either<Item, TagKey<Item>>, Item> entry : compostMap.entrySet()) {
             entry.getKey().ifLeft(item -> cachedItemMap.put(item, entry.getValue()));
-            entry.getKey().ifRight(itemTagKey -> Registry.ITEM.getTagOrEmpty(itemTagKey).forEach(itemHolder -> cachedItemMap.put(itemHolder.value(), entry.getValue())));
+            entry.getKey().ifRight(itemTagKey -> Registry.ITEM.getOrCreateTag(itemTagKey).forEach(itemHolder -> cachedItemMap.put(itemHolder.value(), entry.getValue())));
         }
     }
 

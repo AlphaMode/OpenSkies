@@ -35,7 +35,6 @@ public class CompostLoader extends SimpleJsonResourceReloadListener implements I
             }
             CompostRegistry.addCompost(GsonHelper.getAsItem(compostInfo, "from"), GsonHelper.getAsItem(compostInfo, "to"));
         }
-        CompostRegistry.cacheEntries();
     }
 
     @Override
