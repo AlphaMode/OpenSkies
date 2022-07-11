@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Material;
 
 public class OpenBlocks implements BlockRegistryContainer {
-    public static final InfestedLeavesBlock INFESTED_LEAVES = new InfestedLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).requiresCorrectToolForDrops());
+    public static final InfestedLeavesBlock INFESTED_LEAVES = new InfestedLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
 
     public static final SieveBlock SIEVE = new SieveBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD));
     public static final BarrelBlock WOOD_BARREL = new BarrelBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD));
