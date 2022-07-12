@@ -1,0 +1,8 @@
+{
+    "parent": "exnihiloabsentia:block/wood_barrel",
+    "textures": {
+        "particle": "minecraft:block/stone",
+        "texture": "minecraft:block/stone"
+    },
+    "name": "stone_barrel"
+}

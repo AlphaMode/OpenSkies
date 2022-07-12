@@ -1,44 +1,58 @@
 {
   "schemaVersion": 1,
-  "id": "open_skies",
+  "id": "exnihiloabsentia",
   "version": "${version}",
-  "name": "Open Skies",
+
+  "name": "Ex Nihilo Absentia",
   "description": "",
   "authors": [
-    "AlphaMode"
+    "AlphaMode",
+    "Maximumpower55"
   ],
-  "contact": {},
+  "contact": {
+    "issues": "https://github.com/AlphaMode/OpenSkies/issues",
+    "sources": "https://github.com/AlphaMode/OpenSkies"
+  },
+
   "license": "MIT",
-  "icon": "assets/OpenSkies/icon.png",
+  "icon": "assets/open_skies/icon.png",
+
   "environment": "*",
-  "dprovides": [
-  "com_electronwill_night-config_core",
-  "com_electronwill_night-config_toml"
-  ],
   "entrypoints": {
-    "client": [
-      "me.alphamode.openskies.client.OpenSkiesClient"
-    ],
     "main": [
-      "me.alphamode.openskies.OpenSkies"
+      "me.alphamode.exnihiloabsentia.ExNihiloAbsentia"
+    ],
+    "client": [
+      "me.alphamode.exnihiloabsentia.client.ExNihiloAbsentiaClient"
     ],
     "fabric-datagen": [
-      "me.alphamode.openskies.data.OpenGenerator"
+      "me.alphamode.exnihiloabsentia.data.ModDataGenerator"
     ],
     "top_plugin": [
-      "me.alphamode.openskies.compat.probe.OpenProbePlugin"
+      "me.alphamode.exnihiloabsentia.compat.probe.ModProbePlugin"
     ],
     "rei_client": [
-      "me.alphamode.openskies.compat.rei.OpenSkiesREI"
+      "me.alphamode.exnihiloabsentia.compat.rei.ModREIPlugin"
     ]
   },
-  "accessWidener": "open.accesswidener",
-  "mixins": [
-    "OpenSkies.mixins.json"
+
+  "dprovides": [
+    "com_electronwill_night-config_core",
+    "com_electronwill_night-config_toml"
   ],
+
+  "mixins": [
+    "exnihiloabsentia.mixins.json"
+  ],
+  "accessWidener": "exnihiloabsentia.accesswidener",
+
   "depends": {
-    "fabricloader": ">=0.14.4",
-    "fabric": "*",
+    "fabricloader": ">=0.14.8",
+    "fabric": ">=0.57.0+1.18.2",
     "minecraft": "1.18.2"
+  },
+
+  "breaks": {
+    "optifabric": "*"
   }
 }

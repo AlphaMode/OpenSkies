@@ -1,0 +1,17 @@
+{
+  "item.exnihiloabsentia.silkworm": "Silkworm",
+  "item.exnihiloabsentia.string_mesh": "String Mesh",
+  "item.exnihiloabsentia.flint_mesh": "Flint Mesh",
+  "item.exnihiloabsentia.iron_mesh": "Iron Mesh",
+  "item.exnihiloabsentia.diamond_mesh": "Diamond Mesh",
+  "item.exnihiloabsentia.wood_crook": "Wood Crook",
+
+  "block.exnihiloabsentia.infested_leaves": "Infested Leaves",
+  "block.exnihiloabsentia.sieve": "Sieve",
+  "block.exnihiloabsentia.wood_barrel": "Wood Barrel",
+  "block.exnihiloabsentia.stone_barrel": "Stone Barrel",
+
+  "rei.exnihiloabsentia.title.barrel": "Barrel Composting",
+
+  "itemGroup.exnihiloabsentia.exnihiloabsentia": "Ex Nihilo Absentia"
+}

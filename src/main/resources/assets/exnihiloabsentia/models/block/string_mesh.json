@@ -1,0 +1,6 @@
+{
+    "parent": "exnihiloabsentia:block/mesh_base",
+    "textures": {
+        "texture": "minecraft:block/white_wool"
+    }
+}
