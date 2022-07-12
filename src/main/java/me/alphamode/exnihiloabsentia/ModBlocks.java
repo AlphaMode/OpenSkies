@@ -17,6 +17,10 @@ public class ModBlocks implements BlockRegistryContainer {
     public static final BarrelBlock WOOD_BARREL = new BarrelBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD));
     public static final BarrelBlock STONE_BARREL = new BarrelBlock(FabricBlockSettings.copy(Blocks.STONE));
 
+    // COMPRESSED BLOCKS
+
+    public static final Block COMPRESSED_SAND = new Block(FabricBlockSettings.copy(Blocks.SAND));
+
     @Override
     public BlockItem createBlockItem(Block block, String identifier) {
         return new BlockItem(block, new Item.Properties().tab(ExNihiloAbsentia.TAB));

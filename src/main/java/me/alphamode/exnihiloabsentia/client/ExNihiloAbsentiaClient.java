@@ -9,6 +9,7 @@ import me.alphamode.exnihiloabsentia.client.renderers.InfestedLeavesBlockEntityR
 import me.alphamode.exnihiloabsentia.client.renderers.SieveBlockEntityRenderer;
 import me.alphamode.exnihiloabsentia.meshes.ModMeshes;
 import me.alphamode.exnihiloabsentia.util.Color;
+import me.alphamode.star.client.models.CTModelRegistry;
 import me.alphamode.star.client.models.ModelSwapper;
 import me.alphamode.star.events.client.ModelBakeEvent;
 import net.fabricmc.api.ClientModInitializer;
@@ -37,6 +38,7 @@ public class ExNihiloAbsentiaClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(ModBlockEntities.INFESTED_LEAVES, InfestedLeavesBlockEntityRenderer::new);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutoutMipped(), ModBlocks.INFESTED_LEAVES);
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(), ModBlocks.SIEVE);
+        CTModelRegistry.registerCTModel(ModBlocks.COMPRESSED_SAND);
         ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> {
             Optional<InfestedLeavesBlockEntity> blockEntity = blockAndTintGetter.getBlockEntity(blockPos, ModBlockEntities.INFESTED_LEAVES);
 
