@@ -2,6 +2,7 @@ package me.alphamode.exnihiloabsentia.client;
 
 import me.alphamode.exnihiloabsentia.ModBlockEntities;
 import me.alphamode.exnihiloabsentia.ModBlocks;
+import me.alphamode.exnihiloabsentia.ModFluids;
 import me.alphamode.exnihiloabsentia.blocks.entity.InfestedLeavesBlockEntity;
 import me.alphamode.exnihiloabsentia.client.models.SieveModel;
 import me.alphamode.exnihiloabsentia.client.renderers.BarrelRenderer;
@@ -16,6 +17,8 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.Minecraft;
@@ -36,8 +39,9 @@ public class ExNihiloAbsentiaClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(ModBlockEntities.BARREL, BarrelRenderer::new);
 
         BlockEntityRendererRegistry.register(ModBlockEntities.INFESTED_LEAVES, InfestedLeavesBlockEntityRenderer::new);
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutoutMipped(), ModBlocks.INFESTED_LEAVES);
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(), ModBlocks.SIEVE);
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.INFESTED_LEAVES, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SIEVE, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(), ModFluids.FLOWING_WITCHWATER, ModFluids.WITCHWATER);
         CTModelRegistry.registerCTModel(ModBlocks.COMPRESSED_SAND);
         ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> {
             Optional<InfestedLeavesBlockEntity> blockEntity = blockAndTintGetter.getBlockEntity(blockPos, ModBlockEntities.INFESTED_LEAVES);
@@ -48,6 +52,7 @@ public class ExNihiloAbsentiaClient implements ClientModInitializer {
             Color originalColor = new Color(Minecraft.getInstance().getBlockColors().getColor(blockEntity.get().getLeavesType(), blockEntity.get().getLevel(), blockPos, 0));
             return Color.average(originalColor, Color.WHITE, (float) Math.pow(blockEntity.get().getProgress(), 2)).toInt();
         }, ModBlocks.INFESTED_LEAVES);
+        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.WITCHWATER, ModFluids.FLOWING_WITCHWATER, SimpleFluidRenderHandler.coloredWater(2556006));
         ModelBakeEvent.ON_MODEL_BAKE.register((modelManager, existingModels, loader) -> {
             Map<String, BakedModel> meshes = new HashMap<>();
             for (ResourceLocation mesh : ModMeshes.MESH.keySet()) {

@@ -3,6 +3,8 @@
 c9f04da68e0143104f5364f7d13cb25150a87811 data\exnihiloabsentia\loot_tables\blocks\wood_barrel.json
 9d4a592ad19cfca144323d2519b8c52d9040bbb9 data\minecraft\tags\blocks\mineable\hoe.json
 0ec320d4da092d12b84010bc2b2ddf2a70565651 data\minecraft\tags\blocks\mineable\axe.json
+feef197dc5fe3dcd117003c619842b01684a3500 data\minecraft\tags\fluids\water.json
 9d4a592ad19cfca144323d2519b8c52d9040bbb9 data\minecraft\tags\blocks\leaves.json
 f99c93a80d8b3b6baa30dcbfde7ff5b38fe41301 data\exnihiloabsentia\loot_tables\blocks\sieve.json
+0e5108a7c83538b4bc3ad51837d37dd1132bbd12 data\c\tags\items\water_buckets.json
 0a5f66df7a0646221d500d6e4f88c601332bacba data\minecraft\tags\blocks\mineable\pickaxe.json

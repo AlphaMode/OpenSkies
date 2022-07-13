@@ -26,6 +26,7 @@ public class ExNihiloAbsentia implements ModInitializer {
         FieldRegistrationHandler.register(ModItems.class, MOD_ID, false);
         FieldRegistrationHandler.register(ModMeshes.class, MOD_ID, false);
         FieldRegistrationHandler.register(ModBlocks.class, MOD_ID, false);
+        FieldRegistrationHandler.register(ModFluids.class, MOD_ID, false);
         FieldRegistrationHandler.register(ModBlockEntities.class, MOD_ID, false);
 
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.INFESTED_LEAVES, 30, 60);

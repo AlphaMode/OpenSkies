@@ -6,6 +6,8 @@ import me.alphamode.exnihiloabsentia.items.MeshItem;
 import me.alphamode.exnihiloabsentia.items.SilkwormItem;
 import me.alphamode.exnihiloabsentia.meshes.ModMeshes;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Items;
 
 public class ModItems implements ItemRegistryContainer {
     public static SilkwormItem SILKWORM = new SilkwormItem(defaultSettings());
@@ -15,6 +17,8 @@ public class ModItems implements ItemRegistryContainer {
     public static MeshItem DIAMOND_MESH = new MeshItem(ModMeshes.DIAMOND, defaultSettings());
 
     public static CrookItem WOOD_CROOK = new CrookItem(defaultSettings());
+
+    public static BucketItem WITCHWATER_BUCKET = new BucketItem(ModFluids.WITCHWATER, defaultSettings().craftRemainder(Items.BUCKET).stacksTo(1));
 
     public static FabricItemSettings defaultSettings() {
         return new FabricItemSettings().group(ExNihiloAbsentia.TAB);

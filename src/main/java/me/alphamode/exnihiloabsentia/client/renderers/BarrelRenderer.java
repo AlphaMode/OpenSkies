@@ -61,7 +61,7 @@ public class BarrelRenderer implements BlockEntityRenderer<BarrelBlockEntity> {
         float g = ((color >> 8) & 255) / 256f;
         float b = (color & 255) / 256f;
 
-        buffer.getBuffer(RenderType.solid()).putBulkData(pose.last(), emitter.toBakedQuad(0, fluidSprite, false), r, g, b, 0x00F0_00F0, OverlayTexture.NO_OVERLAY);
+        buffer.getBuffer(RenderType.translucent()).putBulkData(pose.last(), emitter.toBakedQuad(0, fluidSprite, false), r, g, b, 0x00F0_00F0, OverlayTexture.NO_OVERLAY);
     }
 
     protected void renderBlockFace(BarrelBlockEntity barrel, ItemStack content, PoseStack pose, MultiBufferSource buffer) {
