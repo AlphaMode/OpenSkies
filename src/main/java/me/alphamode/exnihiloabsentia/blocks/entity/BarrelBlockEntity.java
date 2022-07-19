@@ -3,8 +3,9 @@ package me.alphamode.exnihiloabsentia.blocks.entity;
 import com.google.common.collect.Iterators;
 
 import me.alphamode.exnihiloabsentia.ModBlockEntities;
-import me.alphamode.exnihiloabsentia.barrel.BarrelItemStorage;
-import me.alphamode.exnihiloabsentia.recipes.CompostRegistry;
+import me.alphamode.exnihiloabsentia.util.SingleItemStorage;
+import me.alphamode.exnihiloabsentia.client.AbsentiaTextures;
+import me.alphamode.exnihiloabsentia.recipes.compost.CompostRegistry;
 import me.alphamode.exnihiloabsentia.util.Color;
 import me.alphamode.exnihiloabsentia.util.FluidStorageProvider;
 import me.alphamode.exnihiloabsentia.util.ItemStorageProvider;
@@ -21,6 +22,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
@@ -28,12 +30,12 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings({"UnstableApiUsage", "rawtypes"})
 public class BarrelBlockEntity extends BlockEntity implements FluidStorageProvider<FluidTank>, ItemStorageProvider {
-    private float compostProgress = 0;
+    private float compostProgress, fillAmount = 0;
     public Color originalColor = Color.WHITE;
     private Color currentColor = Color.WHITE;
 
     private FluidTank fluidTank = new FluidTank(FluidConstants.BUCKET);
-    private BarrelItemStorage itemInventory = new BarrelItemStorage();
+    private SingleItemStorage itemInventory = new SingleItemStorage();
 
     public void tick() {
         if (itemInventory.getStack() == ItemStack.EMPTY && level.isRainingAt(worldPosition.above()) && compostProgress <= 0) {
@@ -42,11 +44,11 @@ public class BarrelBlockEntity extends BlockEntity implements FluidStorageProvid
                 t.commit();
             }
         }
-        if (!itemInventory.getResource().isBlank() && CompostRegistry.containsCompost(itemInventory.getStack().getItem())) {
+        if (!itemInventory.getResource().isBlank() && CompostRegistry.containsCompost(itemInventory.getStack().getItem()) && fillAmount >= 1) {
             compostProgress += 0.00166666667;
-            currentColor = Color.average(originalColor, Color.WHITE, compostProgress);
+            currentColor = Color.average(originalColor, AbsentiaTextures.getBlockColor(Blocks.DIRT), compostProgress);
             if (compostProgress >= 1) {
-                itemInventory.setStack(CompostRegistry.getCompost(itemInventory.getStack().getItem()).getDefaultInstance());
+                itemInventory.setStack(CompostRegistry.getCompost(itemInventory.getStack().getItem()).to().getDefaultInstance());
                 compostProgress = 0;
             }
         }
@@ -73,6 +75,7 @@ public class BarrelBlockEntity extends BlockEntity implements FluidStorageProvid
     public void setOriginalColor() {
         Block block = ((BlockItem)itemInventory.getStack().getItem()).getBlock();
         originalColor = new Color(Minecraft.getInstance().getBlockColors().getColor(block.defaultBlockState(), getLevel(), getBlockPos(), 0));
+        currentColor = originalColor;
     }
 
     @Override
@@ -81,7 +84,7 @@ public class BarrelBlockEntity extends BlockEntity implements FluidStorageProvid
     }
 
     @Override
-    public BarrelItemStorage getItemStorage(@Nullable Direction side) {
+    public SingleItemStorage getItemStorage(@Nullable Direction side) {
         return itemInventory;
     }
 
@@ -104,5 +107,15 @@ public class BarrelBlockEntity extends BlockEntity implements FluidStorageProvid
 
     public float getProgress() {
         return compostProgress;
+    }
+
+    public void fillCompost(float progressDelta) {
+        this.fillAmount += progressDelta;
+        if (fillAmount > 1)
+            fillAmount = 1;
+    }
+
+    public float getFillAmount() {
+        return fillAmount;
     }
 }

@@ -1,0 +1,19 @@
+{
+  "composts": [
+    {
+      "from": "minecraft:bread",
+      "to": "minecraft:dirt",
+      "amount": 0.16
+    },
+    {
+      "from": "#minecraft:leaves",
+      "to": "minecraft:dirt",
+      "amount": 0.125
+    },
+    {
+      "from": "minecraft:spider_eye",
+      "to": "minecraft:dirt",
+      "amount": 0.08
+    }
+  ]
+}

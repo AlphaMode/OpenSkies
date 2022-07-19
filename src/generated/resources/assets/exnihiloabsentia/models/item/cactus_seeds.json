@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "exnihiloabsentia:item/cactus_seeds"
+  }
+}

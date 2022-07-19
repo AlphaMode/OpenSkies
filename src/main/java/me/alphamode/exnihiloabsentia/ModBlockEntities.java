@@ -1,6 +1,5 @@
 package me.alphamode.exnihiloabsentia;
 
-import io.wispforest.owo.registration.annotations.IterationIgnored;
 import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
 import me.alphamode.exnihiloabsentia.blocks.entity.BarrelBlockEntity;
 import me.alphamode.exnihiloabsentia.blocks.entity.InfestedLeavesBlockEntity;
@@ -11,7 +10,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class ModBlockEntities implements AutoRegistryContainer<BlockEntityType<?>> {
     public static final BlockEntityType<InfestedLeavesBlockEntity> INFESTED_LEAVES = FabricBlockEntityTypeBuilder.create(InfestedLeavesBlockEntity::new, ModBlocks.INFESTED_LEAVES).build();
-    @IterationIgnored
     public static final BlockEntityType<SieveBlockEntity> SIEVE = FabricBlockEntityTypeBuilder.create(SieveBlockEntity::new, ModBlocks.SIEVE).build();
     public static final BlockEntityType<BarrelBlockEntity> BARREL = FabricBlockEntityTypeBuilder.create(BarrelBlockEntity::new, ModBlocks.WOOD_BARREL, ModBlocks.STONE_BARREL).build();
 

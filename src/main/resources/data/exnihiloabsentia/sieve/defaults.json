@@ -1,0 +1,101 @@
+{
+  "data": [
+    {
+      "from": "minecraft:dirt",
+      "drops": [
+        {
+          "item": "exnihiloabsentia:stone_pebble",
+          "chance": 1
+        },
+        {
+          "item": "exnihiloabsentia:stone_pebble",
+          "chance": 1
+        },
+        {
+          "item": "exnihiloabsentia:stone_pebble",
+          "chance": 0.5
+        },
+        {
+          "item": "exnihiloabsentia:stone_pebble",
+          "chance": 0.5
+        },
+        {
+          "item": "exnihiloabsentia:stone_pebble",
+          "chance": 0.1
+        },
+        {
+          "item": "exnihiloabsentia:stone_pebble",
+          "chance": 0.1
+        },
+        {
+          "item": "exnihiloabsentia:granite_pebble",
+          "chance": 0.5
+        },
+        {
+          "item": "exnihiloabsentia:granite_pebble",
+          "chance": 0.1
+        },
+        {
+          "item": "exnihiloabsentia:diorite_pebble",
+          "chance": 0.5
+        },
+        {
+          "item": "exnihiloabsentia:diorite_pebble",
+          "chance": 0.1
+        },
+        {
+          "item": "minecraft:wheat_seeds",
+          "chance": 0.7
+        },
+        {
+          "item": "minecraft:melon_seeds",
+          "chance": 0.35
+        },
+        {
+          "item": "minecraft:pumpkin_seeds",
+          "chance": 0.35
+        },
+        {
+          "item": "exnihiloabsentia:oak_seeds",
+          "chance": 0.05
+        },
+        {
+          "item": "exnihiloabsentia:spruce_seeds",
+          "chance": 0.05
+        },
+        {
+          "item": "exnihiloabsentia:birch_seeds",
+          "chance": 0.05
+        },
+        {
+          "item": "exnihiloabsentia:jungle_seeds",
+          "chance": 0.05
+        },
+        {
+          "item": "exnihiloabsentia:acacia_seeds",
+          "chance": 0.05
+        },
+        {
+          "item": "exnihiloabsentia:dark_oak_seeds",
+          "chance": 0.05
+        },
+        {
+          "item": "exnihiloabsentia:cactus_seeds",
+          "chance": 0.05
+        },
+        {
+          "item": "exnihiloabsentia:sugar_cane_seeds",
+          "chance": 0.05
+        },
+        {
+          "item": "exnihiloabsentia:carrot_seeds",
+          "chance": 0.05
+        },
+        {
+          "item": "exnihiloabsentia:potato_seeds",
+          "chance": 0.05
+        }
+      ]
+    }
+  ]
+}

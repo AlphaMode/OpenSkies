@@ -6,6 +6,8 @@
   "mixins": [
   ],
   "client": [
+    "LevelRendererMixin",
+    "MinecraftMixin"
   ],
   "injectors": {
     "defaultRequire": 1

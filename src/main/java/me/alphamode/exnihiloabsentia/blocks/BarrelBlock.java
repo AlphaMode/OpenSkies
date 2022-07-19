@@ -1,9 +1,9 @@
 package me.alphamode.exnihiloabsentia.blocks;
 
 import me.alphamode.exnihiloabsentia.ModBlockEntities;
-import me.alphamode.exnihiloabsentia.barrel.BarrelItemStorage;
+import me.alphamode.exnihiloabsentia.util.SingleItemStorage;
 import me.alphamode.exnihiloabsentia.blocks.entity.BarrelBlockEntity;
-import me.alphamode.exnihiloabsentia.recipes.CompostRegistry;
+import me.alphamode.exnihiloabsentia.recipes.compost.CompostRegistry;
 import me.alphamode.star.transfer.FluidTank;
 import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
@@ -61,7 +61,7 @@ public class BarrelBlock extends Block implements EntityBlock {
         Optional<BarrelBlockEntity> barrel = level.getBlockEntity(pos, ModBlockEntities.BARREL);
         if (barrel.isPresent()) {
             FluidTank barrelFluidStorage = barrel.get().getFluidStorage(result.getDirection());
-            BarrelItemStorage barrelItemStorage = barrel.get().getItemStorage(result.getDirection());
+            SingleItemStorage barrelItemStorage = barrel.get().getItemStorage(result.getDirection());
             ResourceAmount<FluidVariant> curentResource = barrel.get().getCurrentFluid();
             try (Transaction t = Transaction.openOuter()) {
                 if (fluidStorage != null && barrelItemStorage.getAmount() <= 0) {
@@ -80,8 +80,9 @@ public class BarrelBlock extends Block implements EntityBlock {
             }
             if (barrelFluidStorage.getAmount() <= 0) {
                 SingleSlotStorage<ItemVariant> handStorage = PlayerInventoryStorage.of(player).getHandSlot(hand);
-                if (CompostRegistry.containsCompost(handStorage.getResource().getItem()) && barrelItemStorage.getAmount() == 0) {
+                if (CompostRegistry.containsCompost(handStorage.getResource().getItem()) && barrel.get().getFillAmount() != 1) {
                     try (Transaction t = Transaction.openOuter()) {
+                        barrel.get().fillCompost(CompostRegistry.getCompost(handStorage.getResource().getItem()).amount());
                         StorageUtil.move(handStorage, barrelItemStorage, v -> v.getItem() instanceof BlockItem, 1, t);
                         t.commit();
                         barrel.get().setOriginalColor();

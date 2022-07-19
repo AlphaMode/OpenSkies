@@ -2,7 +2,8 @@ package me.alphamode.exnihiloabsentia;
 
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import me.alphamode.exnihiloabsentia.meshes.ModMeshes;
-import me.alphamode.exnihiloabsentia.recipes.CompostLoader;
+import me.alphamode.exnihiloabsentia.recipes.compost.CompostLoader;
+import me.alphamode.exnihiloabsentia.recipes.sieve.SieveLoader;
 import me.alphamode.exnihiloabsentia.util.FluidStorageProvider;
 import me.alphamode.exnihiloabsentia.util.ItemStorageProvider;
 import net.fabricmc.api.ModInitializer;
@@ -33,6 +34,7 @@ public class ExNihiloAbsentia implements ModInitializer {
         FuelRegistry.INSTANCE.add(ModItems.WOOD_CROOK, 200);
 
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new CompostLoader());
+        ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new SieveLoader());
 
         FluidStorage.SIDED.registerFallback((world, pos, state, blockEntity, context) -> {
             if (blockEntity != null && blockEntity instanceof FluidStorageProvider<?> provider)

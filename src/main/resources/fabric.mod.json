@@ -36,7 +36,7 @@
     ]
   },
 
-  "dprovides": [
+  "provides": [
     "com_electronwill_night-config_core",
     "com_electronwill_night-config_toml"
   ],

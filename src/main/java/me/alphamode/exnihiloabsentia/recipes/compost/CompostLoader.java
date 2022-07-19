@@ -1,4 +1,4 @@
-package me.alphamode.exnihiloabsentia.recipes;
+package me.alphamode.exnihiloabsentia.recipes.compost;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,13 +28,16 @@ public class CompostLoader extends SimpleJsonResourceReloadListener implements I
     protected void apply(Map<ResourceLocation, JsonElement> jsonMap, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
         CompostRegistry.invalidate();
         for (ResourceLocation loc : jsonMap.keySet()) {
-            JsonObject compostInfo = GsonHelper.convertToJsonObject(jsonMap.get(loc), "Compost Type");
-            String from = GsonHelper.getAsString(compostInfo, "from");
-            if (from.startsWith("#")) {
-                CompostRegistry.addCompost(TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(from.substring(1))), GsonHelper.getAsItem(compostInfo, "to"));
-                continue;
+            JsonObject compostMap = GsonHelper.convertToJsonObject(jsonMap.get(loc), "Compost Type");
+            for (JsonElement compostElement : compostMap.getAsJsonArray("composts")) {
+                JsonObject compostInfo = compostElement.getAsJsonObject();
+                String from = GsonHelper.getAsString(compostInfo, "from");
+                if (from.startsWith("#")) {
+                    CompostRegistry.addCompost(TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(from.substring(1))), GsonHelper.getAsItem(compostInfo, "to"), GsonHelper.getAsFloat(compostInfo, "amount"));
+                    continue;
+                }
+                CompostRegistry.addCompost(GsonHelper.getAsItem(compostInfo, "from"), GsonHelper.getAsItem(compostInfo, "to"), GsonHelper.getAsFloat(compostInfo, "amount"));
             }
-            CompostRegistry.addCompost(GsonHelper.getAsItem(compostInfo, "from"), GsonHelper.getAsItem(compostInfo, "to"));
         }
     }
 

@@ -19,6 +19,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.Minecraft;
@@ -63,5 +64,7 @@ public class ExNihiloAbsentiaClient implements ClientModInitializer {
                 existingModels.put(m, new SieveModel(existingModels.get(m), meshes));
             });
         });
+
+        ClientTickEvents.END_CLIENT_TICK.register(ClientTickHandler::clientTickEnd);
     }
 }

@@ -12,13 +12,15 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 
 public class ModBlocks implements BlockRegistryContainer {
-    public static final InfestedLeavesBlock INFESTED_LEAVES = new InfestedLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-
-    public static final SieveBlock SIEVE = new SieveBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD));
     public static final BarrelBlock WOOD_BARREL = new BarrelBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD));
     public static final BarrelBlock STONE_BARREL = new BarrelBlock(FabricBlockSettings.copy(Blocks.STONE));
     @NoBlockItem
     public static final Block WITCHWATER = new LiquidBlock(ModFluids.WITCHWATER, FabricBlockSettings.copy(Blocks.WATER));
+
+    public static final InfestedLeavesBlock INFESTED_LEAVES = new InfestedLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+
+    public static final SieveBlock SIEVE = new SieveBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD));
+
 
     // COMPRESSED BLOCKS
 

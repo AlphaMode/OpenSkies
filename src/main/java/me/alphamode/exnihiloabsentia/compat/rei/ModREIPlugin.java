@@ -4,7 +4,7 @@ import me.alphamode.exnihiloabsentia.ExNihiloAbsentia;
 import me.alphamode.exnihiloabsentia.ModBlocks;
 import me.alphamode.exnihiloabsentia.compat.rei.catergories.BarrelCategory;
 import me.alphamode.exnihiloabsentia.compat.rei.displays.BarrelDisplay;
-import me.alphamode.exnihiloabsentia.recipes.CompostRegistry;
+import me.alphamode.exnihiloabsentia.recipes.compost.CompostRegistry;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
